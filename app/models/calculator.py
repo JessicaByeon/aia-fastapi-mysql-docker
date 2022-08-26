@@ -1,10 +1,10 @@
 class Calculator(object): # 클래스
     def __init__(self, first, second):
         self.first = first # 속성(property) 등록
-        self.second = second
+        self.sencond = second
         
     def sum(self): # 메소드(method) 등록
-        return self.first + self.second
+        return self.first + self.English
     
     def subtract(self):
         return self.first - self.second

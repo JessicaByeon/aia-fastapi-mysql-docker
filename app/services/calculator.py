@@ -1,7 +1,7 @@
 from app.models.calculator import Calculator
 class CalculatorService(object):
-    def __init__(self):
-        self.calculator = Calculator()
+    def __init__(self) -> None :
+        pass
         
     def calculate(self, first, second):
         calculator = Calculator(first, second)
