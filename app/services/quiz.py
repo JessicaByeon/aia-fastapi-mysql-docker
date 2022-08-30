@@ -69,16 +69,9 @@ class Quiz(object):
         '''
         
     def quiz_3(self):
-        df3 = [np.random.randint(10, 100, size=(2,3))]
-        # df3 = pd.DataFrame.from_dict(
-        #     {'0' :[df3], '1' :[df3]},
-        #     orient='index',
-        #     columns=['0', '1', '2'])
-        # ic(df3)
-        # ic| df3: [array([[77, 50, 42], [26, 85, 63]])]
-        df3 = pd.DataFrame(df3, index=['0', '1'], columns=['0', '1', '2'])
-        ic(pd.DataFrame(df3))
-        
+        df = pd.DataFrame(np.random.randint(10, 100, size=(2,3)))
+        ic(df)  
+              
         ''' 
         
         Q4 국어, 영어, 수학, 사회 4과목을 시험치른 10명의 학생들의 성적표 작성. 
@@ -132,16 +125,18 @@ class Quiz(object):
     
     ''' 
     def quiz_5(self, subject) :
-        scores = self.quiz_4()    
-    
+        scores = self.quiz_4()
+        scores.loc[:,subject]
+        
     ''' 
     Q6 원하는 학생점수만 출력하시오. (아이디가 랜덤이므로 맨 위에 학생점수 출력으로 대체함)
         lDZid  57  90  55  24
     '''
+    
     def quiz_6(self, id) :
         print(f'{id}의 성적출력') # 당연히 id 가 일치할리 없음. 형식적으로 출력함
         scores = self.quiz_4()
-            
+        ic(scores.iloc[[0],:])
     '''
     Q7 각 학생들의 점수의 총합과 마지막 행은 과목총점 추가해서 출력
         ic| df5:  국어   영어   수학   사회   과학    총점
@@ -159,3 +154,7 @@ class Quiz(object):
     '''
     def quiz_7(self) :
         scores = self.quiz_4()
+        scores['총점'] = scores.sum(axis=1)
+        ls = scores.sum().tolist()
+        scores.loc['과목총점'] = ls
+        ic(scores)
